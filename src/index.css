@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-electric-blue text-white;
+  }
+}
+
+.text-glow {
+  text-shadow: 0 0 8px rgba(0, 123, 255, 0.5), 0 0 20px rgba(198, 166, 100, 0.3);
+}
+
+.btn-glow {
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3), 0 0 20px rgba(0, 123, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.6), 0 0 40px rgba(0, 123, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(120deg, transparent, rgba(198, 166, 100, 0.2), transparent) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
