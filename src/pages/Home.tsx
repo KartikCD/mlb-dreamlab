@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Clapperboard, Film, Wand2 } from 'lucide-react';
+import { Film, Megaphone, Landmark, CalendarDays } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 const projects = [
@@ -27,17 +27,22 @@ const services = [
     {
         icon: <Film className="w-10 h-10 text-champagne-gold" />,
         title: 'Film Production',
-        description: 'From concept to final cut, we bring cinematic visions to life with state-of-the-art equipment and a passionate crew.'
+        description: 'From independent films to large-scale cinema, we provide end-to-end production support and craft timeless stories.'
     },
     {
-        icon: <Clapperboard className="w-10 h-10 text-champagne-gold" />,
-        title: 'Post-Production',
-        description: 'Our expert editors, colorists, and sound designers polish your story to perfection, ensuring a powerful impact.'
+        icon: <Megaphone className="w-10 h-10 text-champagne-gold" />,
+        title: 'Advertising',
+        description: 'We design content that captures attention and drives impact—creative, bold, and unforgettable ads and campaigns.'
     },
     {
-        icon: <Wand2 className="w-10 h-10 text-champagne-gold" />,
-        title: 'VFX & Motion',
-        description: 'We create breathtaking visual effects and motion graphics that elevate narratives and captivate audiences.'
+        icon: <Landmark className="w-10 h-10 text-champagne-gold" />,
+        title: 'Government PR & Campaigns',
+        description: 'Trusted by institutions, we craft communication strategies that reach people, inspire change, and build trust.'
+    },
+    {
+        icon: <CalendarDays className="w-10 h-10 text-champagne-gold" />,
+        title: 'Events & Experiences',
+        description: 'We create immersive, engaging, and memorable events, curating every detail to perfection for any occasion.'
     }
 ];
 
@@ -152,7 +157,7 @@ const Home = () => {
                     We offer a complete suite of production services to bring your ideas to the screen.
                 </p>
             </motion.div>
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
                 {services.map((service, index) => (
                     <motion.div
                         key={service.title}
@@ -170,6 +175,37 @@ const Home = () => {
                     </motion.div>
                 ))}
             </div>
+        </div>
+      </section>
+
+      {/* About Us Section */}
+      <section className="py-20 md:py-32 bg-steel-gray-darker">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8 }}
+            className="grid md:grid-cols-2 gap-12 items-center"
+          >
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">Who We Are</h2>
+              <p className="text-text-secondary text-lg">
+                MBF DREAMLABS is more than a media house—it’s a creative ecosystem. Founded with the belief that great stories can come from anyone, we don’t measure you by your past work, but by the brilliance of your ideas and the fire of your imagination.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">What We Do?</h2>
+              <p className="text-text-secondary text-lg">
+                We are an all-in-one creative powerhouse. From script to screen, strategy to execution, idea to media, we have the expertise, talent, and resources to bring visions alive across multiple mediums.
+              </p>
+            </div>
+          </motion.div>
+          <div className="mt-16 text-center">
+            <Button asLink to="/about" variant="secondary">
+              More About Us
+            </Button>
+          </div>
         </div>
       </section>
 
