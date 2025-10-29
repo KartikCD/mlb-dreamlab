@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Don't rewrite requests for existing files or directories
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Don't rewrite static asset requests (important for Vite)
+  RewriteCond %{REQUEST_URI} !^/assets/
+
+  # Redirect everything else to index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
