@@ -1,27 +1,10 @@
 import { motion } from 'framer-motion';
-import { Film, Megaphone, Landmark, CalendarDays } from 'lucide-react';
+import { Film, Megaphone, Landmark, CalendarDays, ArrowRight } from 'lucide-react';
 import Button from '../components/ui/Button';
-
-const projects = [
-  {
-    title: 'Project Cygnus',
-    category: 'Sci-Fi Short Film',
-    imageUrl: 'https://images.pexels.com/photos/3944311/pexels-photo-3944311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    description: 'A lone astronaut discovers a mysterious signal from a distant nebula, forcing her to confront the vastness of space and her own solitude.'
-  },
-  {
-    title: 'Echoes of Silence',
-    category: 'Documentary',
-    imageUrl: 'https://images.pexels.com/photos/7990933/pexels-photo-7990933.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    description: 'This documentary explores the abandoned landscapes of Chernobyl, capturing the haunting beauty and resilient nature that has reclaimed the silent city.'
-  },
-  {
-    title: 'Crimson Tide',
-    category: 'Music Video',
-    imageUrl: 'https://images.pexels.com/photos/1444420/pexels-photo-1444420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    description: 'A visually stunning music video that blends surreal imagery with powerful choreography to tell a story of passion and heartbreak.'
-  },
-];
+import { newsData } from '../data/newsData';
+import { projectsData } from '../data/projectData';
+import { Link } from 'react-router-dom';
+import ImageCarousel from '../components/shared/ImageCarousel';
 
 const services = [
     {
@@ -46,18 +29,8 @@ const services = [
     }
 ];
 
-const news = [
-    {
-        title: 'DEAMLAB wins Gold at the Cinematic Arts Festival',
-        category: 'Award',
-        imageUrl: 'https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    },
-    {
-        title: 'Behind the Scenes of "Project Cygnus"',
-        category: 'BTS',
-        imageUrl: 'https://images.pexels.com/photos/2693447/pexels-photo-2693447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    }
-]
+// Get the latest 2 news articles
+const latestNews = newsData.slice(0, 2);
 
 const Home = () => {
   return (
@@ -113,29 +86,38 @@ const Home = () => {
               A selection of our projects that showcase our passion for storytelling and cinematic excellence.
             </p>
           </motion.div>
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+          <div className="mt-20 space-y-20 md:space-y-28">
+            {projectsData.map((project, index) => (
               <motion.div
-                key={project.title}
-                className="bg-steel-gray rounded-lg overflow-hidden card-glow flex flex-col"
-                initial={{ opacity: 0, y: 20 }}
+                key={project.id}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8 }}
               >
-                <div className="relative overflow-hidden group">
-                  <img src={project.imageUrl} alt={project.title} className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <span className="text-sm uppercase tracking-widest text-champagne-gold">{project.category}</span>
-                  <h3 className="text-2xl font-bold mt-1 mb-3">{project.title}</h3>
-                  <p className="text-text-secondary text-base flex-grow">{project.description}</p>
-                </div>
+                <Link to={`/projects/${project.slug}`} className="group block">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div className={`overflow-hidden rounded-lg ${index % 2 === 0 ? 'md:order-last' : ''}`}>
+                      <img 
+                        src={project.featuredImage} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <span className="text-sm uppercase tracking-widest text-champagne-gold">{project.category}</span>
+                      <h3 className="text-3xl md:text-4xl font-bold mt-2 mb-4 group-hover:text-champagne-gold transition-colors duration-300">{project.title}</h3>
+                      <p className="text-text-secondary text-lg mb-6">{project.excerpt}</p>
+                      <div className="mt-auto text-electric-blue font-semibold flex items-center group-hover:translate-x-1 transition-transform duration-300">
+                        View Project <ArrowRight className="inline ml-2 w-5 h-5" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
-          <div className="mt-16 text-center">
+          <div className="mt-20 text-center">
             <Button asLink to="/projects" variant="primary">
               View All Projects
             </Button>
@@ -181,30 +163,33 @@ const Home = () => {
       {/* About Us Section */}
       <section className="py-20 md:py-32 bg-steel-gray-darker">
         <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">Who We Are</h2>
-              <p className="text-text-secondary text-lg">
-                MBF DREAMLABS is more than a media house—it’s a creative ecosystem. Founded with the belief that great stories can come from anyone, we don’t measure you by your past work, but by the brilliance of your ideas and the fire of your imagination.
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-glow">An Ecosystem for Imagination</h2>
+              <p className="text-text-secondary text-lg leading-relaxed mb-6">
+                MBF DREAMLABS is more than a media house—it’s a creative powerhouse where imagination is the only currency. We believe great stories come from brilliant ideas and fiery ambition, not just past work.
               </p>
-            </div>
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">What We Do?</h2>
-              <p className="text-text-secondary text-lg">
-                We are an all-in-one creative powerhouse. From script to screen, strategy to execution, idea to media, we have the expertise, talent, and resources to bring visions alive across multiple mediums.
+              <p className="text-text-secondary text-lg leading-relaxed mb-8">
+                From script to screen and strategy to execution, we are an all-in-one partner with the expertise, talent, and resources to bring any vision to life across multiple mediums.
               </p>
-            </div>
-          </motion.div>
-          <div className="mt-16 text-center">
-            <Button asLink to="/about" variant="secondary">
-              More About Us
-            </Button>
+              <Button asLink to="/about" variant="secondary">
+                Discover Our Story
+              </Button>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="card-glow rounded-lg"
+            >
+              <ImageCarousel />
+            </motion.div>
           </div>
         </div>
       </section>
@@ -224,24 +209,30 @@ const Home = () => {
                 </p>
             </motion.div>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-                {news.map((item, index) => (
+                {latestNews.map((item, index) => (
                     <motion.div
-                        key={item.title}
-                        className="group bg-steel-gray-darker rounded-lg overflow-hidden card-glow"
+                        key={item.id}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 0.8, delay: index * 0.2 }}
                     >
+                      <Link to={`/news/${item.slug}`} className="block bg-steel-gray-darker rounded-lg overflow-hidden card-glow group">
                         <div className="overflow-hidden">
-                            <img src={item.imageUrl} alt={item.title} className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" />
+                            <img src={item.featuredImage} alt={item.title} className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" />
                         </div>
                         <div className="p-6">
                             <span className="text-sm uppercase tracking-widest text-electric-blue">{item.category}</span>
                             <h3 className="text-xl font-bold mt-2 group-hover:text-champagne-gold transition-colors">{item.title}</h3>
                         </div>
+                      </Link>
                     </motion.div>
                 ))}
+            </div>
+             <div className="mt-16 text-center">
+                <Button asLink to="/news" variant="primary">
+                    View All News
+                </Button>
             </div>
         </div>
       </section>

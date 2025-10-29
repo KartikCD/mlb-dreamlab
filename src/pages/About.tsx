@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import PageHeader from '../components/shared/PageHeader';
 import Button from '../components/ui/Button';
+import { Eye, Target } from 'lucide-react';
 
 const founders = [
   {
@@ -26,21 +27,42 @@ const founders = [
 const About = () => {
   return (
     <div className="bg-background min-h-screen text-text-primary">
-      <PageHeader title="About Us" subtitle="The story, vision, and team behind MBF DREAMLABS." />
+      <PageHeader title="Our Story" subtitle="We believe in the power of imagination to shape worlds." />
       
-      {/* Who We Are & What We Do Section */}
+      {/* Our Story Section */}
       <section className="py-20 md:py-32">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-glow">More Than a Media House</h2>
+            <p className="text-text-secondary text-lg leading-relaxed">
+              MBF DREAMLABS was born from a simple, powerful idea: that great stories can come from anywhere and anyone. We are an all-in-one creative powerhouse, an ecosystem where imagination is the only currency. We don't measure you by your past work, but by the brilliance of your ideas and the fire of your ambition. From script to screen, strategy to execution, we have the expertise, talent, and resources to bring any vision to life.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Vision & Mission Section */}
+      <section className="py-20 md:py-32 bg-steel-gray">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.8 }}
+              className="bg-steel-gray-darker p-8 rounded-lg card-glow-subtle h-full"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-glow">Who We Are</h2>
+              <div className="flex items-center mb-4">
+                <Target className="w-10 h-10 text-champagne-gold mr-4 flex-shrink-0" />
+                <h3 className="text-3xl font-bold">Our Mission</h3>
+              </div>
               <p className="text-text-secondary text-lg leading-relaxed">
-                MBF DREAMLABS is more than a media house—it’s a creative ecosystem. Founded with the belief that great stories can come from anyone, we don’t measure you by your past work, but by the brilliance of your ideas and the fire of your imagination.
+                To empower creators and bring groundbreaking stories to life, transforming bold ideas into unforgettable cinematic experiences that resonate globally.
               </p>
             </motion.div>
             <motion.div
@@ -48,10 +70,14 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-steel-gray-darker p-8 rounded-lg card-glow-subtle h-full"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-glow">What We Do?</h2>
+              <div className="flex items-center mb-4">
+                <Eye className="w-10 h-10 text-champagne-gold mr-4 flex-shrink-0" />
+                <h3 className="text-3xl font-bold">Our Vision</h3>
+              </div>
               <p className="text-text-secondary text-lg leading-relaxed">
-                We are an all-in-one creative powerhouse. From script to screen, strategy to execution, idea to media, we have the expertise, talent, and resources to bring visions alive across multiple mediums.
+                To be a beacon of creative innovation, where imagination knows no bounds and every voice has the power to shape the future of storytelling.
               </p>
             </motion.div>
           </div>
