@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles from existing components */
+.text-glow {
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.card-glow {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease-in-out;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3), 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+/* New Carousel Navigation Styles */
+.swiper-nav-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.swiper-nav-button:hover {
+  border-color: #D4AF37; /* champagne-gold */
+  color: #D4AF37;
+  transform: scale(1.05);
+}
+
+.swiper-nav-button.swiper-button-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: scale(1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.custom-pagination-item {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 20px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.custom-pagination-item:hover {
+  color: white;
+}
+
+.custom-pagination-item.active {
+  color: white;
+}
+
+.custom-pagination-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #D4AF37; /* champagne-gold */
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.custom-pagination-item.active::after {
+  transform: scaleX(1);
+}
+
+@media (min-width: 640px) {
+  .custom-pagination-item {
+    font-size: 14px;
+  }
+  .swiper-nav-button {
+    width: 52px;
+    height: 52px;
+  }
+}
