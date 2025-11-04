@@ -107,5 +107,28 @@ export const projectsData: Project[] = [
         caption: 'The Pripyat amusement park, a haunting symbol of a city frozen in time.'
       }
     ]
+  },
+  {
+    id: 4,
+    slug: 'urban-canvas',
+    title: 'Urban Canvas',
+    category: 'Brand Film',
+    featuredImage: 'https://images.pexels.com/photos/1647919/pexels-photo-1647919.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    excerpt: 'A visual ode to street art and the vibrant culture of the city\'s hidden alleyways, telling the story of a brand that lives at the intersection of creativity and community.',
+    date: '2023-09-10',
+    client: 'Artisan Co.',
+    services: ['Cinematography', 'Storyboarding', 'Editing', 'Color Grading'],
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Urban Canvas was a passion project that allowed us to explore the raw, unfiltered creativity of street artists. We followed three artists as they transformed blank walls into powerful murals, capturing their process, their stories, and the impact of their work on the local community.'
+      },
+      {
+        type: 'image',
+        url: 'https://images.pexels.com/photos/1545505/pexels-photo-1545505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'A street artist working on a large mural',
+        caption: 'Capturing the scale and detail of the artwork in progress.'
+      }
+    ]
   }
 ];
