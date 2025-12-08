@@ -102,19 +102,19 @@ const About = () => {
         </div>
       </section>
 
-      {/* Section 3: Founder Full-Width Image with Parallax Effect */}
-      <motion.section
-        className="h-[60vh] md:h-[80vh] bg-cover bg-center bg-scroll lg:bg-fixed"
-        style={{
-          backgroundImage: `url('https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
-        }}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
-        variants={founderImageAnimation}
-      >
-        <div className="w-full h-full bg-black/30" />
-      </motion.section>
+      {/* Section 3: Founder Full-Width Image */}
+      <section className="relative h-[60vh] md:h-[80vh] overflow-hidden">
+        <motion.img
+          src="https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2"
+          alt="Hemanshu Rai, Founder &amp; Visionary of MBF DREAMLABS"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={founderImageAnimation}
+        />
+        <div className="absolute inset-0 w-full h-full bg-black/30" />
+      </section>
 
       {/* Section 4: The Visionary (Founder Details) */}
       <section className="py-20 md:py-32 bg-background">
@@ -130,7 +130,7 @@ const About = () => {
               Hemanshu Rai
             </h2>
             <p className="text-electric-blue uppercase tracking-widest text-md mt-2 mb-12">
-              Founder & Visionary
+              Founder &amp; Visionary
             </p>
             <div className="space-y-6 text-text-secondary text-lg md:text-xl leading-relaxed text-left md:text-justify">
               <p>
@@ -138,7 +138,7 @@ const About = () => {
                 journey is one of passion, innovation, and purpose. After
                 completing his early education in Varanasi and Kanpur, he
                 expanded his horizons overseas, pursuing a Bachelor’s in
-                Business Administration (Banking & Finance) in Australia.
+                Business Administration (Banking &amp; Finance) in Australia.
               </p>
               <p>
                 Hemanshu is not just an entrepreneur—he is a visionary builder
@@ -147,6 +147,22 @@ const About = () => {
                 production, each reflecting his relentless pursuit of innovation
                 with impact.
               </p>
+              <ul className="list-disc list-inside space-y-4 my-8 text-left pl-4">
+                <li>
+                  In the water sector, he has set new benchmarks by driving
+                  projects that address critical sustainability challenges.
+                </li>
+                <li>
+                  In agriculture, he pioneered the use of cutting-edge drones
+                  for precision farming, revolutionizing the way farmers engage
+                  with technology.
+                </li>
+                <li>
+                  And in cinema, he brings the same spirit of innovation,
+                  channeling it into stories that entertain, inspire, and
+                  endure.
+                </li>
+              </ul>
               <p>
                 Today, Hemanshu leads MBF DREAMLABS, a media house that
                 redefines storytelling. His vision is to create art that goes
