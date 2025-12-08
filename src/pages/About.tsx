@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 
 const About = () => {
   const fadeIn = {
@@ -62,21 +62,40 @@ const About = () => {
             variants={fadeIn}
           >
             <div className="space-y-6 text-lg md:text-xl text-text-secondary leading-relaxed">
-              <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-8">Who We Are</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-8">
+                Who We Are
+              </h2>
               <p className="text-left">
-                At MBF DREAMLABS, we are more than just a media house—we are a creative ecosystem. Born from the belief that every story matters, we don’t define creativity by past credentials, but by the strength of ideas and the courage to dream bigger.
+                At MBF DREAMLABS, we are more than just a media house—we are a
+                creative ecosystem where imagination meets execution. Born from
+                the belief that every story matters, we don’t define creativity
+                by past credentials, but by the strength of ideas and the
+                courage to dream bigger.
               </p>
               <p className="text-left">
-                Our team is a collective of filmmakers, storytellers, strategists, and innovators who thrive on transforming bold concepts into powerful realities. We exist to inspire, engage, and create work that lasts forever.
+                Our team is a collective of filmmakers, storytellers,
+                strategists, and innovators who thrive on transforming bold
+                concepts into powerful realities. We exist to inspire, engage,
+                and create work that lasts forever—whether it’s on the silver
+                screen, in digital spaces, or through real-world experiences.
               </p>
             </div>
             <div className="space-y-6 text-lg md:text-xl text-text-secondary leading-relaxed">
-              <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-8">What We Do</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-8">
+                What We Do
+              </h2>
               <p className="text-left">
-                From the very first spark of an idea to its final delivery, we provide end-to-end solutions under one roof. Whether it’s script to screen, strategy to execution, or concept to campaign, we merge artistry with technology to bring visions alive across multiple mediums.
+                We are an all-in-one creative powerhouse. From the very first
+                spark of an idea to its final delivery, we provide end-to-end
+                solutions under one roof. Whether it’s script to screen,
+                strategy to execution, or concept to campaign, idea to media we
+                merge artistry with technology to bring visions alive across
+                multiple mediums.
               </p>
               <p className="text-left">
-                At MBF DREAMLABS, we don’t just create content—we build experiences that move people, spark conversations, and leave a lasting impact.
+                At MBF DREAMLABS, we don’t just create content—we build
+                experiences that move people, spark conversations, and leave a
+                lasting impact.
               </p>
             </div>
           </motion.div>
@@ -86,7 +105,9 @@ const About = () => {
       {/* Section 3: Founder Full-Width Image with Parallax Effect */}
       <motion.section
         className="h-[60vh] md:h-[80vh] bg-cover bg-center bg-scroll lg:bg-fixed"
-        style={{ backgroundImage: `url('https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')` }}
+        style={{
+          backgroundImage: `url('https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+        }}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
@@ -105,17 +126,37 @@ const About = () => {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeIn}
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-glow">Hemanshu Rai</h2>
-            <p className="text-electric-blue uppercase tracking-widest text-md mt-2 mb-12">Founder & Visionary</p>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-glow">
+              Hemanshu Rai
+            </h2>
+            <p className="text-electric-blue uppercase tracking-widest text-md mt-2 mb-12">
+              Founder & Visionary
+            </p>
             <div className="space-y-6 text-text-secondary text-lg md:text-xl leading-relaxed text-left md:text-justify">
               <p>
-                Hailing from the historic city of Varanasi, Hemanshu Rai’s journey is one of passion, innovation, and purpose. After completing his early education in Varanasi and Kanpur, he expanded his horizons overseas, pursuing a Bachelor’s in Business Administration (Banking & Finance) in Australia.
+                Hailing from the historic city of Varanasi, Hemanshu Rai’s
+                journey is one of passion, innovation, and purpose. After
+                completing his early education in Varanasi and Kanpur, he
+                expanded his horizons overseas, pursuing a Bachelor’s in
+                Business Administration (Banking & Finance) in Australia.
               </p>
               <p>
-                Hemanshu is not just an entrepreneur—he is a visionary builder of ideas. His diverse ventures span across environmental engineering, agricultural drone technology, and motion picture production, each reflecting his relentless pursuit of innovation with impact.
+                Hemanshu is not just an entrepreneur—he is a visionary builder
+                of ideas. His diverse ventures span across environmental
+                engineering, agricultural drone technology, and motion picture
+                production, each reflecting his relentless pursuit of innovation
+                with impact.
               </p>
               <p>
-                Today, he leads MBF DREAMLABS with a vision to create art that goes beyond entertainment—projects that blend artistry with emotional depth, leaving audiences moved. With every project, he carries forward his belief that true impact lies at the intersection of creativity, technology, and human connection.
+                Today, Hemanshu leads MBF DREAMLABS, a media house that
+                redefines storytelling. His vision is to create art that goes
+                beyond entertainment—projects that blend artistry with emotional
+                depth, leaving audiences moved .
+              </p>
+              <p>
+                With every project, Hemanshu carries forward his belief that
+                true impact lies at the intersection of creativity, technology,
+                and human connection.
               </p>
             </div>
           </motion.div>
