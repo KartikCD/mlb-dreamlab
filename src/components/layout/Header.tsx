@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Film } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Film } from "lucide-react";
 
 const navLinks = [
-  { name: 'Projects', path: '/projects' },
-  { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'News', path: '/news' },
-  { name: 'Behind The Scenes', path: '/behind-the-scenes' },
-  { name: 'Contact', path: '/contact' },
+  { name: "Projects", path: "/projects" },
+  { name: "About", path: "/about" },
+  { name: "Services", path: "/services" },
+  { name: "News", path: "/news" },
+  { name: "Behind The Scenes", path: "/behind-the-scenes" },
+  { name: "Contact", path: "/contact" },
 ];
 
 const mobileMenuVariants = {
@@ -32,7 +32,7 @@ const mobileMenuVariants = {
 
 const mobileLinkVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } },
 };
 
 const Header = () => {
@@ -43,26 +43,31 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    `relative font-medium tracking-wide transition-colors duration-300 hover:text-champagne-gold ${isActive ? 'text-champagne-gold' : 'text-text-primary'}`;
+    `relative font-medium tracking-wide transition-colors duration-300 hover:text-champagne-gold ${
+      isActive ? "text-champagne-gold" : "text-text-primary"
+    }`;
 
   return (
     <>
-      <header 
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-          isScrolled 
-            ? 'bg-background/95 backdrop-blur-md shadow-lg border-b border-border-color' 
-            : 'bg-transparent border-b border-transparent'
+          isScrolled
+            ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border-color"
+            : "bg-transparent border-b border-transparent"
         }`}
       >
         <div className="container mx-auto px-6 py-5 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-3 text-2xl font-bold text-text-primary z-50">
+          <Link
+            to="/"
+            className="flex items-center gap-3 text-2xl font-bold text-text-primary z-50"
+          >
             <Film className="w-8 h-8 text-champagne-gold" />
-            <span>DREAMLABS</span>
+            <span>MBF DREAMLAB LLP</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -75,7 +80,11 @@ const Header = () => {
                       <motion.div
                         className="absolute -bottom-2 left-0 right-0 h-0.5 bg-champagne-gold"
                         layoutId="underline"
-                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                        }}
                       />
                     )}
                   </>
@@ -85,7 +94,10 @@ const Header = () => {
           </nav>
 
           <div className="lg:hidden z-50">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-text-primary">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-text-primary"
+            >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -102,9 +114,7 @@ const Header = () => {
             exit="hidden"
             className="fixed inset-0 bg-background z-40 lg:hidden flex flex-col items-center justify-center"
           >
-            <motion.nav 
-              className="flex flex-col items-center justify-center h-full gap-8"
-            >
+            <motion.nav className="flex flex-col items-center justify-center h-full gap-8">
               {navLinks.map((link) => (
                 <motion.div key={link.path} variants={mobileLinkVariants}>
                   <NavLink

@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
-import Button from '../ui/Button';
-import HeroBackgroundAnimation from './HeroBackgroundAnimation';
+import { motion } from "framer-motion";
+import { ArrowDown } from "lucide-react";
+import Button from "../ui/Button";
+import HeroBackgroundAnimation from "./HeroBackgroundAnimation";
 
 const Hero = () => {
   return (
@@ -15,10 +15,13 @@ const Hero = () => {
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         poster="https://images.pexels.com/photos/3792779/pexels-photo-3792779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       >
-        <source src="https://videos.pexels.com/video-files/854132/854132-hd_1920_1080_25fps.mp4" type="video/mp4" />
+        <source
+          src="https://videos.pexels.com/video-files/854132/854132-hd_1920_1080_25fps.mp4"
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
-      
+
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60 z-10"></div>
 
@@ -33,7 +36,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-glow"
         >
-          Crafting Visual Stories
+          MBF DREAMLAB
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +44,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-text-secondary leading-relaxed"
         >
-          We are a creative production house specializing in film, video, and digital storytelling that inspires emotion.
+          More than a media house—it’s a creative ecosystem.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,10 +52,20 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button asLink to="/projects" variant="primary" className="text-lg px-8 py-3">
+          <Button
+            asLink
+            to="/projects"
+            variant="primary"
+            className="text-lg px-8 py-3"
+          >
             Explore Our Work
           </Button>
-          <Button asLink to="/contact" variant="secondary" className="text-lg px-8 py-3">
+          <Button
+            asLink
+            to="/contact"
+            variant="secondary"
+            className="text-lg px-8 py-3"
+          >
             Let's Create Together
           </Button>
         </motion.div>

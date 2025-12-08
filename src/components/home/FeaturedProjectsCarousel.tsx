@@ -1,17 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperCore } from 'swiper';
-import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
-import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, ArrowDown } from 'lucide-react';
+import { useState, useRef, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperCore } from "swiper";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowLeft, ArrowDown } from "lucide-react";
 
-import { projectsData } from '../../data/projectData';
-import Button from '../ui/Button';
+import { projectsData } from "../../data/projectData";
+import Button from "../ui/Button";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
 
 const FeaturedProjectsCarousel = () => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null);
@@ -25,13 +25,18 @@ const FeaturedProjectsCarousel = () => {
   // Effect to scroll the project list on desktop to keep the active item in view
   useEffect(() => {
     if (listContainerRef.current) {
-      const activeItem = listContainerRef.current.children[activeIndex] as HTMLLIElement;
+      const activeItem = listContainerRef.current.children[
+        activeIndex
+      ] as HTMLLIElement;
       if (activeItem) {
         const { offsetLeft, offsetWidth } = activeItem;
         // Center the active item in the scrollable list
         listContainerRef.current.scrollTo({
-          left: offsetLeft - listContainerRef.current.offsetWidth / 2 + offsetWidth / 2,
-          behavior: 'smooth',
+          left:
+            offsetLeft -
+            listContainerRef.current.offsetWidth / 2 +
+            offsetWidth / 2,
+          behavior: "smooth",
         });
       }
     }
@@ -51,8 +56,8 @@ const FeaturedProjectsCarousel = () => {
           disableOnInteraction: false,
         }}
         navigation={{
-          nextEl: '.carousel-arrow-next',
-          prevEl: '.carousel-arrow-prev',
+          nextEl: ".carousel-arrow-next",
+          prevEl: ".carousel-arrow-prev",
         }}
         onSwiper={setSwiperInstance}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
@@ -67,7 +72,7 @@ const FeaturedProjectsCarousel = () => {
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-              
+
               <div className="absolute inset-0 flex items-end p-8 md:p-16 lg:p-24 lg:pb-40">
                 <motion.div
                   key={project.id} // Re-trigger animation on slide change
@@ -76,7 +81,7 @@ const FeaturedProjectsCarousel = () => {
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="max-w-3xl"
                 >
-                  <span className="text-sm uppercase tracking-widest text-champagne-gold font-semibold">{project.category}</span>
+                  {/* <span className="text-sm uppercase tracking-widest text-champagne-gold font-semibold">{project.category}</span> */}
                   <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter my-4 text-glow">
                     {project.title}
                   </h2>
@@ -105,7 +110,11 @@ const FeaturedProjectsCarousel = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
               >
-                <Button asLink to={`/projects/${projectsData[activeIndex].slug}`} variant="primary">
+                <Button
+                  asLink
+                  to={`/projects/${projectsData[activeIndex].slug}`}
+                  variant="primary"
+                >
                   View Project <ArrowRight className="inline ml-2 w-5 h-5" />
                 </Button>
               </motion.div>
@@ -122,19 +131,28 @@ const FeaturedProjectsCarousel = () => {
             </button>
 
             <div className="flex-grow overflow-hidden">
-              <ul ref={listContainerRef} className="flex items-center gap-10 overflow-x-auto scrollbar-hide py-4">
+              <ul
+                ref={listContainerRef}
+                className="flex items-center gap-10 overflow-x-auto scrollbar-hide py-4"
+              >
                 {projectsData.map((project, index) => (
                   <li key={project.id} className="relative flex-shrink-0">
                     <button
                       onClick={() => handleProjectClick(index)}
                       className={`transition-colors duration-300 group pb-4 ${
-                        activeIndex === index ? 'text-white' : 'text-text-secondary hover:text-white'
+                        activeIndex === index
+                          ? "text-white"
+                          : "text-text-secondary hover:text-white"
                       }`}
                     >
-                      <span className="text-sm font-semibold tracking-wider uppercase">{project.title}</span>
+                      <span className="text-sm font-semibold tracking-wider uppercase">
+                        {project.title}
+                      </span>
                       <div
                         className={`absolute bottom-0 left-0 h-0.5 bg-champagne-gold transition-all duration-500 ease-out ${
-                          activeIndex === index ? 'w-full' : 'w-0 group-hover:w-1/2'
+                          activeIndex === index
+                            ? "w-full"
+                            : "w-0 group-hover:w-1/2"
                         }`}
                       ></div>
                     </button>
@@ -151,7 +169,11 @@ const FeaturedProjectsCarousel = () => {
                 transition={{ duration: 0.4 }}
                 className="flex-shrink-0"
               >
-                <Button asLink to={`/projects/${projectsData[activeIndex].slug}`} variant="primary">
+                <Button
+                  asLink
+                  to={`/projects/${projectsData[activeIndex].slug}`}
+                  variant="primary"
+                >
                   View Project <ArrowRight className="inline ml-2 w-5 h-5" />
                 </Button>
               </motion.div>

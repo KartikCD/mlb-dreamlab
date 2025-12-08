@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
+import HimanshuFounder from "../images/himanshu.png";
+
 const About = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 30 },
@@ -105,7 +107,7 @@ const About = () => {
       {/* Section 3: Founder Full-Width Image */}
       <section className="relative h-[60vh] md:h-[80vh] overflow-hidden">
         <motion.img
-          src="https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2"
+          src={HimanshuFounder}
           alt="Hemanshu Rai, Founder &amp; Visionary of MBF DREAMLABS"
           className="absolute inset-0 w-full h-full object-cover object-center"
           initial="hidden"
