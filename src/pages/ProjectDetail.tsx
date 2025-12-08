@@ -1,60 +1,30 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { projectsData, ContentBlock } from '../data/projectData';
-import { ArrowLeft, Calendar, Film, User, Wrench } from 'lucide-react';
+import { projectsData } from '../data/projectData';
+import { ArrowLeft, Calendar, User, Wrench } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Lightbox from 'yet-another-react-lightbox';
+import Captions from 'yet-another-react-lightbox/plugins/captions';
+import 'yet-another-react-lightbox/styles.css';
+import 'yet-another-react-lightbox/plugins/captions.css';
 
-const renderContentBlock = (block: ContentBlock, index: number) => {
-  const blockVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: index * 0.1 } }
-  };
-
-  return (
-    <motion.div
-      key={index}
-      variants={blockVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-    >
-      {(() => {
-        switch (block.type) {
-          case 'paragraph':
-            return <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8">{block.text}</p>;
-          case 'image':
-            return (
-              <figure className="my-10">
-                <img src={block.url} alt={block.alt} className="w-full rounded-lg shadow-lg" />
-                {block.caption && <figcaption className="text-center text-sm text-text-secondary mt-3 italic">{block.caption}</figcaption>}
-              </figure>
-            );
-          case 'video':
-            return (
-              <div className="my-10 aspect-video w-full rounded-lg overflow-hidden shadow-lg">
-                <video
-                  controls
-                  loop
-                  muted
-                  playsInline
-                  poster={block.poster}
-                  className="w-full h-full object-cover"
-                >
-                  <source src={block.url} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            );
-          default:
-            return null;
-        }
-      })()}
-    </motion.div>
-  );
+const getGridClass = (span?: 'col' | 'row' | 'large') => {
+  switch (span) {
+    case 'large':
+      return 'md:col-span-2 md:row-span-2';
+    case 'col':
+      return 'md:col-span-2';
+    case 'row':
+      return 'md:row-span-2';
+    default:
+      return '';
+  }
 };
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = projectsData.find(p => p.slug === slug);
+  const [index, setIndex] = useState(-1);
 
   if (!project) {
     return (
@@ -68,6 +38,14 @@ const ProjectDetail = () => {
       </div>
     );
   }
+
+  const slides = project.galleryImages.map(({ src, width, height, alt, caption }) => ({
+    src,
+    width,
+    height,
+    title: alt,
+    description: caption,
+  }));
 
   return (
     <div className="bg-background text-text-primary min-h-screen">
@@ -115,9 +93,28 @@ const ProjectDetail = () => {
             </div>
           </motion.div>
 
-          <article className="mt-16 max-w-4xl mx-auto">
-            {project.content.map((block, index) => renderContentBlock(block, index))}
-          </article>
+          <div className="mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] gap-4">
+              {project.galleryImages.map((image, i) => (
+                <motion.div
+                  key={image.id}
+                  className={`group relative overflow-hidden rounded-lg cursor-pointer ${getGridClass(image.span)}`}
+                  onClick={() => setIndex(i)}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: i * 0.05 }}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
           
           <div className="mt-16 text-center">
             <Link to="/projects" className="inline-flex items-center text-champagne-gold hover:text-white transition-colors duration-300 text-lg">
@@ -127,6 +124,31 @@ const ProjectDetail = () => {
           </div>
         </div>
       </div>
+
+      <Lightbox
+        open={index >= 0}
+        index={index}
+        close={() => setIndex(-1)}
+        slides={slides}
+        plugins={[Captions]}
+        captions={{
+            descriptionTextAlign: 'center',
+            descriptionMaxLines: 3,
+        }}
+        styles={{
+          container: { backgroundColor: 'rgba(15, 23, 42, 0.95)' },
+          icon: { color: '#FFFFFF', filter: 'drop-shadow(0 0 5px rgba(0,0,0,0.5))' },
+          captionsDescription: {
+            fontFamily: 'sans-serif',
+            color: '#A3A3A3',
+            fontSize: '1rem',
+            lineHeight: '1.5rem',
+            fontWeight: '300',
+            letterSpacing: '0.025em',
+          }
+        }}
+        controller={{ closeOnBackdropClick: true }}
+      />
     </div>
   );
 };

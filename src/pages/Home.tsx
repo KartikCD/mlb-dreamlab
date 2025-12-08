@@ -99,13 +99,13 @@ const Home = () => {
       {/* About Us Section */}
       <section className="bg-steel-gray-darker py-20 md:py-28 text-text-primary overflow-x-hidden">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.8 }}
-              className="text-center lg:text-left"
+              className="text-center lg:text-left lg:w-1/2"
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-glow">An Ecosystem for Imagination</h2>
               <p className="text-text-secondary text-lg leading-relaxed mb-6">
@@ -125,7 +125,7 @@ const Home = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="card-glow rounded-lg"
+              className="card-glow rounded-lg w-full lg:w-1/2"
             >
               <ImageCarousel />
             </motion.div>
