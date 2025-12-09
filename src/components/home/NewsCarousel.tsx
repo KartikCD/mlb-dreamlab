@@ -1,12 +1,12 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import { newsData } from '../../data/newsData';
-import NewsCard from '../news/NewsCard';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import { newsData } from "../../data/newsData";
+import NewsCard from "../news/NewsCard";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/navigation";
 
 const NewsCarousel = () => {
   return (
@@ -16,8 +16,8 @@ const NewsCarousel = () => {
         spaceBetween={30}
         slidesPerView={1}
         navigation={{
-          nextEl: '.news-carousel-next',
-          prevEl: '.news-carousel-prev',
+          nextEl: ".news-carousel-next",
+          prevEl: ".news-carousel-prev",
         }}
         autoplay={{
           delay: 4000,
@@ -43,7 +43,7 @@ const NewsCarousel = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      
+
       {/* Custom Navigation */}
       <div className="absolute -top-20 right-0 flex items-center gap-4">
         <button className="carousel-arrow-button news-carousel-prev">

@@ -1,15 +1,15 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Layout from './components/layout/Layout';
-import Home from './pages/Home';
-import Projects from './pages/Projects';
-import ProjectsNew from './pages/ProjectsNew'; // Import the new page
-import ProjectDetail from './pages/ProjectDetail';
-import About from './pages/About';
-import Services from './pages/Services';
-import News from './pages/News';
-import BehindTheScenes from './pages/BehindTheScenes';
-import Contact from './pages/Contact';
-import Article from './pages/Article';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import ProjectsNew from "./pages/ProjectsNew"; // Import the new page
+import ProjectDetail from "./pages/ProjectDetail";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import News from "./pages/News";
+import BehindTheScenes from "./pages/BehindTheScenes";
+import Contact from "./pages/Contact";
+import Article from "./pages/Article";
 
 function App() {
   return (
@@ -18,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/projects-new" element={<ProjectsNew />} /> {/* Add the new route */}
+          <Route path="/projects-new" element={<ProjectsNew />} />{" "}
+          {/* Add the new route */}
           <Route path="/projects/:slug" element={<ProjectDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
